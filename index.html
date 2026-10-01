@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Income - Iyandikishe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:sans-serif; text-align:center; padding:20px; background:#f5f5f5}
+.card{background:white; padding:20px; border-radius:12px; max-width:420px; margin:auto; box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+input{padding:12px; margin:8px 0; width:90%; border:1px solid #ccc; border-radius:6px}
+button{padding:12px 20px; background:black; color:white; border:none; border-radius:6px; width:95%; font-weight:bold}
+.success{background:#d4edda; color:#155724; padding:15px; border-radius:8px; margin-bottom:15px; border:1px solid #c3e6cb; display:none}
+.box{border:1px solid #eee; padding:15px; margin-top:15px; border-radius:8px; text-align:left; background:#fafafa}
+</style>
+</head>
+<body>
+<div class="card">
+<div id="register">
+<h2>Smart Income</h2>
+<p>Iyandikishe ubone imyandiko yange</p>
+<input id="name" placeholder="Amazina yawe"><br>
+<input id="email" placeholder="Email yawe"><br>
+<input type="password" id="pass" placeholder="Password"><br>
+<button onclick="register()">IYANDIKISHE</button>
+</div>
+
+<div id="dashboard" style="display:none">
+<div id="successMsg" class="success">
+✅ <b>Kwiyandikisha byagenze neza!</b><br>
+Murakaza neza, imyandiko yawe iri hepfo.
+</div>
+<h2>Imyandiko Yange</h2>
+<div class="box">
+<p>📄 <b>Isomo 1:</b> Uko watangira Smart Income <br><a href="#">Soma hano</a></p>
+<hr>
+<p>📄 <b>Isomo 2:</b> Amabanga yo gutsinda <br><a href="#">Soma hano</a></p>
+<hr>
+<p>📄 <b>Isomo 3:</b> Video isobanura byose <br><a href="#">Reba hano</a></p>
+</div>
+<button onclick="logout()" style="margin-top:15px; background:#666">Sohoka</button>
+</div>
+</div>
+
+<script>
+function register(){
+  if(document.getElementById("name").value && document.getElementById("email").value){
+    localStorage.setItem("user", document.getElementById("email").value);
+    document.getElementById("register").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+    document.getElementById("successMsg").style.display="block";
+    // Hisha message nyuma y'amasegonda 5
+    setTimeout(()=>{document.getElementById("successMsg").style.display="none"}, 5000);
+  } else {
+    alert("Uzuza amazina na email byose!");
+  }
+}
+function logout(){localStorage.clear(); location.reload();}
+if(localStorage.getItem("user")){
+  document.getElementById("register").style.display="none";
+  document.getElementById("dashboard").style.display="block";
+}
+</script>
+</body>
+</html>
